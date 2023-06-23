@@ -1,39 +1,113 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+public enum Direction 
+{
+    y,x,z
+}
 public class Movement : MonoBehaviour
 {
-    [SerializeField] Vector3 DirectionTOmove;
-    Touch touch;
-    Vector3 startingpos;
-    private void Start()
-    {
-        startingpos=transform.position;
-    }
+    private bool dragging = false;
+    private Vector3 startMousePos;
+    private Vector3 startPos;
+    private Vector3 lastMousePos;
+    private Vector3 direction = Vector3.right;
+    private bool collided = false;
+    [SerializeField] Direction DirectionToMove;
+    Vector3 CurrentLimit=new Vector3(100,0,100);
+    float mouseX = 0;
+    float mouseY = 0;
+    float ClamppedPos;
     private void Update()
     {
-        if (Input.touchCount > 0)
-            touch = Input.GetTouch(0);
+         mouseX = Input.GetAxis("Mouse X");
+         mouseY = Input.GetAxis("Mouse Y");
 
     }
+    private void OnMouseDown()
+    {
+        dragging = true;
+        startMousePos = Input.mousePosition;
+        startPos = transform.position;
+        lastMousePos = startMousePos;
+        collided = false;
+    }
+
     private void OnMouseDrag()
     {
-        Vector3 touchPosition = touch.position;
-
-        // Set the distance from the camera to the object
-        float distanceFromCamera = Vector3.Distance(transform.position, Camera.main.transform.position);
-
-        // Convert the touch position to world coordinates with the same distance from the camera
-        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(touchPosition.x, distanceFromCamera, touchPosition.z));
-        transform.position = new Vector3(worldPosition.x,startingpos.y,worldPosition.z);
-        //Debug.Log(worldPosition);
-        //transform.position = worldPosition;
-        //float ClampedY = Mathf.Clamp(worldPosition.y, 0, 50);
+        if (!dragging) return;
         
+
+            // Calculate the mouse movement
+            Vector3 mouseOffset = Input.mousePosition - lastMousePos;
+            mouseOffset.y = 0f; // Reset the Y component to prevent movement on the Y-axis
+        Debug.Log("Limit " + CurrentLimit+" mousepos "+mouseOffset);
+        /*
+        if (DirectionToMove == Direction.x)
+        {
+            if (Mathf.Abs(transform.position.x) > Mathf.Abs(CurrentLimit.x))
+            {
+                transform.position = new Vector3(CurrentLimit.x, transform.position.y, transform.position.z);
+                return;
+            }
+            
+
+
+        }
+        else
+        {
+            if (Mathf.Abs(transform.position.z) > Mathf.Abs(CurrentLimit.z))
+            {
+                
+                transform.position = new Vector3(transform.position.x, transform.position.y, CurrentLimit.z);
+                return;
+            }
+            
+           
+        }
+        if (!collided)
+        {
+            
+            transform.position += mouseOffset * Time.deltaTime;
+            
+        }
+        */
+        //ClamppedPos=Mathf.Clamp()
+        if (!collided)
+        {
+
+            transform.position += mouseOffset * Time.deltaTime;
+
+        }
+        lastMousePos = Input.mousePosition;
+        // Update the object's position
+
     }
+
     private void OnMouseUp()
     {
-        
+        dragging = false;
+    }
+
+   
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Car") && dragging)
+        {
+            // Stop movement if obstacle detected
+            collided = true;
+            CurrentLimit=transform.position;
+            //Vector3 mouseoffset = (lastMousePos - startMousePos);
+            //transform.position -= new Vector3(mouseoffset.x,0,mouseoffset.z);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Car"))
+        {
+            collided = false;
+        }
     }
 }

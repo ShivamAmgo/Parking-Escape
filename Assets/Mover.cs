@@ -1,10 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+public enum MovingDirection
+{ 
+    X, 
+    Y,
+    Z
+}
 public class Mover : MonoBehaviour
 {
     [SerializeField] Vector3 DirectionTOmove;//Global Position
+    [SerializeField] MovingDirection Direction_To_move;
     private bool isDragging = false;
     private Vector3 offset;
     private Camera mainCamera;
@@ -29,25 +35,32 @@ public class Mover : MonoBehaviour
 
     void OnMouseDrag()
     {
-        if (!isDragging) return;
+        if (!isDragging ) return;
         
             // Update the object's position based on the mouse position
             Vector3 newPosition = GetMouseWorldPosition() + offset;
+        
             newPosition.y = startingpos.y;// Maintain the object's original height
-            newPosition.x*= DirectionTOmove.x;
-            newPosition.z *= DirectionTOmove.z;
+            
+            
+        if (MovingDirection.X == Direction_To_move)
+            newPosition.z = transform.position.z;
+        else
+            newPosition.x = transform.position.x;
+        
         if (IsCollided)
         {
-            if (DirectionTOmove.x > 0 && Mathf.Abs(newPosition.x) > Mathf.Abs(StopLimit.x))
+            if (DirectionTOmove.x > 0 && Mathf.Abs(newPosition.x) >= Mathf.Abs(StopLimit.x))
             {
                 newPosition = transform.position;
             }
-            else if (DirectionTOmove.x > 0 && Mathf.Abs(newPosition.z) > Mathf.Abs(StopLimit.z))
+            else if (DirectionTOmove.z > 0 && Mathf.Abs(newPosition.z) >= Mathf.Abs(StopLimit.z))
             {
                 newPosition = transform.position;
             }
         }
-            gameObject.transform.position = newPosition;
+        
+            transform.position = newPosition;
         
     }
 
@@ -55,6 +68,7 @@ public class Mover : MonoBehaviour
     {
         // Reset the dragging flag
         isDragging = false;
+        //IsCollided = false;
     }
 
     private Vector3 GetMouseWorldPosition()
@@ -73,7 +87,7 @@ public class Mover : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Car")) return;
+        if (!other.CompareTag("Car") || IsCollided) return;
         Debug.Log("Entered");
         IsCollided = true;
         Collided();
@@ -81,7 +95,7 @@ public class Mover : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         if (!other.CompareTag("Car")) return;
-        IsCollided = true;
+        //IsCollided = true;
     }
     private void OnTriggerExit(Collider other)
     {
