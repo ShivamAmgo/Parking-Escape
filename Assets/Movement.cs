@@ -13,15 +13,22 @@ public class Movement : MonoBehaviour
     private Vector3 lastMousePos;
     private Vector3 direction = Vector3.right;
     private bool collided = false;
-    [SerializeField] Direction DirectionToMove;
-    Vector3 CurrentLimit=new Vector3(100,0,100);
+    [SerializeField] public Direction DirectionToMove;
+    Vector3 CurrentLimit = new Vector3(100, 0, 100);
     float mouseX = 0;
     float mouseY = 0;
-    float ClamppedPos;
+    Vector3 ClamppedPos;
+    bool FrontTouched = false;
+    bool BackTouched = false;
+    //PositionClamper m_positionClamper;
+    private void Start()
+    {
+        //m_positionClamper=GetComponent<PositionClamper>();
+    }
     private void Update()
     {
-         mouseX = Input.GetAxis("Mouse X");
-         mouseY = Input.GetAxis("Mouse Y");
+        mouseX = Input.GetAxis("Mouse X");
+        mouseY = Input.GetAxis("Mouse Y");
 
     }
     private void OnMouseDown()
@@ -36,78 +43,62 @@ public class Movement : MonoBehaviour
     private void OnMouseDrag()
     {
         if (!dragging) return;
-        
 
-            // Calculate the mouse movement
-            Vector3 mouseOffset = Input.mousePosition - lastMousePos;
-            mouseOffset.y = 0f; // Reset the Y component to prevent movement on the Y-axis
-        Debug.Log("Limit " + CurrentLimit+" mousepos "+mouseOffset);
-        /*
+
+       
+        Vector3 mouseOffset = Input.mousePosition - lastMousePos;
+
         if (DirectionToMove == Direction.x)
         {
-            if (Mathf.Abs(transform.position.x) > Mathf.Abs(CurrentLimit.x))
+            mouseOffset.y = 0;
+            if (FrontTouched && (mouseX > 0))
             {
-                transform.position = new Vector3(CurrentLimit.x, transform.position.y, transform.position.z);
-                return;
+                mouseOffset.x = 0;
+                mouseOffset.y = 0;
             }
-            
-
-
+            else if (BackTouched && (mouseX < 0))
+            {
+                mouseOffset.x = 0;
+                mouseOffset.y = 0;
+            }
         }
+
         else
         {
-            if (Mathf.Abs(transform.position.z) > Mathf.Abs(CurrentLimit.z))
+            mouseOffset.x = 0;
+            if (FrontTouched && (mouseY > 0))
             {
-                
-                transform.position = new Vector3(transform.position.x, transform.position.y, CurrentLimit.z);
-                return;
+                mouseOffset.x = 0;
+                mouseOffset.y = 0;
             }
-            
-           
+            else if (BackTouched && (mouseY < 0))
+            {
+                mouseOffset.x = 0;
+                mouseOffset.y = 0;
+            }
         }
-        if (!collided)
-        {
-            
-            transform.position += mouseOffset * Time.deltaTime;
-            
-        }
-        */
-        //ClamppedPos=Mathf.Clamp()
-        if (!collided)
-        {
+            // Reset the Y component to prevent movement on the Y-axis
 
-            transform.position += mouseOffset * Time.deltaTime;
+       
+        transform.position += new Vector3(mouseOffset.x, 0, mouseOffset.y) * Time.deltaTime;
 
-        }
         lastMousePos = Input.mousePosition;
-        // Update the object's position
-
     }
-
     private void OnMouseUp()
     {
         dragging = false;
     }
-
-   
-
-    private void OnTriggerEnter(Collider other)
+    public void SetTriggerTouched(CarFace Facing,bool status)
     {
-        if (other.gameObject.CompareTag("Car") && dragging)
+        if (Facing == CarFace.Front)
         {
-            // Stop movement if obstacle detected
-            collided = true;
-            CurrentLimit=transform.position;
-            //Vector3 mouseoffset = (lastMousePos - startMousePos);
-            //transform.position -= new Vector3(mouseoffset.x,0,mouseoffset.z);
+            FrontTouched = status;
+            BackTouched = false;
         }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Car"))
+        else
         {
-            collided = false;
+            FrontTouched = false;
+            BackTouched = status;
         }
     }
 }
