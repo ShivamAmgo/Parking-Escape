@@ -14,10 +14,12 @@ public class Clamper : MonoBehaviour
     Movement m_movement;
     Vector3 CurrentLimit;
     bool IsClamping = false;
+    Brakes m_Brakes;
     private void Start()
     {
         Target = transform.root;
         m_movement = GetComponentInParent<Movement>();
+        m_Brakes = GetComponentInParent<Brakes>();
     }
     
 
@@ -27,6 +29,11 @@ public class Clamper : MonoBehaviour
         if (other.gameObject.CompareTag("Car") || other.gameObject.CompareTag("Wall") || other.gameObject.CompareTag("Player"))
         {
             m_movement.SetTriggerTouched(Face, true);
+            Brakes BR = other.transform.root.GetComponent<Brakes>();
+            if (BR == null) return;
+            BR.PlayBrakeAnimation();
+            m_Brakes.PlayBrakeAnimation();
+            Debug.Log(transform.root.name+ " trigger  collided with "+ other.transform.root.name);
         }
     }
 
