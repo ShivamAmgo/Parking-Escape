@@ -10,14 +10,16 @@ public class Brakes : MonoBehaviour
     [SerializeField] Transform CarBody;
     [SerializeField] float HitJiggleValue = 3.5f;
     bool IsPlayingBrakesAnimation = false;
+    Rigidbody RB;
     void Start()
     {
-        
+        RB = GetComponent<Rigidbody>();
     }
 
   
     public void PlayBrakeAnimation()
     {
+        RB.velocity = Vector3.zero;
         if (IsPlayingBrakesAnimation) return;
         IsPlayingBrakesAnimation=true;
         Vector3 carbodyangles = CarBody.localEulerAngles;

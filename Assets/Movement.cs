@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 public enum Direction 
 {
@@ -14,22 +15,29 @@ public class Movement : MonoBehaviour
     private Vector3 direction = Vector3.right;
     private bool collided = false;
     [SerializeField] public Direction DirectionToMove;
-    Vector3 CurrentLimit = new Vector3(100, 0, 100);
+    //Vector3 CurrentLimit = new Vector3(100, 0, 100);
     float mouseX = 0;
     float mouseY = 0;
-    Vector3 ClamppedPos;
+    Rigidbody RB;
+    //Vector3 ClamppedPos;
     bool FrontTouched = false;
     bool BackTouched = false;
+    public float moveSpeed = 5f; // The speed at which the object moves towards the target position
+    public float lerpSmoothness = 0.5f; // The smoothness factor for lerping
+
+    private Vector3 targetPosition; // The target position to move towards
     //PositionClamper m_positionClamper;
     private void Start()
     {
-        //m_positionClamper=GetComponent<PositionClamper>();
+        targetPosition = transform.position;
+        RB = GetComponent<Rigidbody>();
     }
     private void Update()
     {
         mouseX = Input.GetAxis("Mouse X");
         mouseY = Input.GetAxis("Mouse Y");
 
+       // transform.position = Vector3.Lerp(transform.position, targetPosition, lerpSmoothness * Time.deltaTime * moveSpeed);
     }
     private void OnMouseDown()
     {
@@ -80,13 +88,14 @@ public class Movement : MonoBehaviour
             // Reset the Y component to prevent movement on the Y-axis
 
        
-        transform.position += new Vector3(mouseOffset.x, 0, mouseOffset.y) * Time.deltaTime;
+        transform.position += new Vector3(mouseOffset.x, 0, mouseOffset.y) * Time.fixedDeltaTime*moveSpeed;
 
         lastMousePos = Input.mousePosition;
     }
     private void OnMouseUp()
     {
         dragging = false;
+        RB.velocity=Vector3.zero;
     }
     public void SetTriggerTouched(CarFace Facing,bool status)
     {
