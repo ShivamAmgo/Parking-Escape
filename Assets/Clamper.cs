@@ -28,9 +28,9 @@ public class Clamper : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Car") || other.gameObject.CompareTag("Wall") || other.gameObject.CompareTag("Player"))
         {
-            m_movement.SetTriggerTouched(Face, true);
+            //m_movement.SetTriggerTouched(Face, true);
             Brakes BR = other.transform.root.GetComponent<Brakes>();
-            if (BR == null) return;
+            if (BR != null) 
             BR.PlayBrakeAnimation();
             m_Brakes.PlayBrakeAnimation();
             Debug.Log(transform.root.name+ " trigger  collided with "+ other.transform.root.name);
@@ -41,7 +41,7 @@ public class Clamper : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Car") || other.gameObject.CompareTag("Wall") || other.gameObject.CompareTag("Player"))
         {
-            m_movement.SetTriggerTouched(Face, false);
+            //m_movement.SetTriggerTouched(Face, false);
         }
     }
 }
