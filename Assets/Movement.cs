@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -26,7 +27,27 @@ public class Movement : MonoBehaviour
     public float lerpSmoothness = 0.5f; // The smoothness factor for lerping
 
     private Vector3 targetPosition; // The target position to move towards
+    bool IsROundStarted = false;
     //PositionClamper m_positionClamper;
+    private void OnEnable()
+    {
+        CarEscapeManager.OnROundStart += OnRoundStarted;
+
+    }
+
+
+
+    private void OnDisable()
+    {
+
+        CarEscapeManager.OnROundStart -= OnRoundStarted;
+    }
+
+    private void OnRoundStarted()
+    {
+        IsROundStarted=true;
+    }
+
     private void Start()
     {
         targetPosition = transform.position;
@@ -34,6 +55,7 @@ public class Movement : MonoBehaviour
     }
     private void Update()
     {
+        if (!IsROundStarted) return;
         mouseX = Input.GetAxis("Mouse X");
         mouseY = Input.GetAxis("Mouse Y");
 

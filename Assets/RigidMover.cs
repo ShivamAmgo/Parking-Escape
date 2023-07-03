@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -6,42 +7,9 @@ using UnityEngine.UIElements;
 
 public class RigidMover : MonoBehaviour
 {
-    /*
-    public float swipeForce = 5f;   // The force to apply to the object on swipe
-    private Rigidbody rb;
-    private Vector2 startPos;
-    private bool isSwiping = false;
-
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
-
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            startPos = Input.mousePosition;
-            isSwiping = true;
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            isSwiping = false;
-            Vector2 endPos = Input.mousePosition;
-            Vector2 swipeDirection = endPos - startPos;
-            if (swipeDirection.y != 0)
-            {
-                rb.AddForce(Vector3.forward * swipeForce * swipeDirection.y, ForceMode.Impulse);
-                Debug.Log(swipeDirection+" "+ swipeForce * swipeDirection.y);
-                return;
-            }
-                
-            rb.AddForce(swipeDirection * swipeForce, ForceMode.Impulse);
-        }
-    }
-    */
     [SerializeField] Direction DirectionToMove;
     [SerializeField]bool FacingBack=false;
+    [SerializeField] float TouchForce = 1;
     public float dragForce = 5f;   // The force to apply to the object while dragging
     private Rigidbody rb;
     private bool isDragging = false;
@@ -50,12 +18,31 @@ public class RigidMover : MonoBehaviour
     float mouseY;
     float DIR = 0;
     float DirModifier = 1;
+    bool IsROundStarted = false;
+    bool IsROundENded = false;
 
-   // public Vector3 localForceDirection = Vector3.forward;
+  
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
+    private void OnEnable()
+    {
+        CarEscapeManager.OnROundStart += OnRoundStarted;
+        CarEscapeManager.OnROundEnd += OnRoundEnd;
+
+    }
+
+    
+
+    private void OnDisable()
+    {
+
+        CarEscapeManager.OnROundStart -= OnRoundStarted;
+        CarEscapeManager.OnROundEnd -= OnRoundEnd;
+    }
+
+  
     private void Start()
     {
         RigidbodyConstraints Rc=rb.constraints;
@@ -70,22 +57,38 @@ public class RigidMover : MonoBehaviour
             Rc |= RigidbodyConstraints.FreezePositionX;
         }
         rb.constraints = Rc;
+        //rb.isKinematic = true;
         if (FacingBack)
             DirModifier = -1;
     }
+    private void OnRoundStarted()
+    {
+        IsROundStarted = true;
+    }
+    private void OnRoundEnd()
+    {
+        IsROundENded = true;
+        //rb.velocity = Vector3.zero;
+
+    }
     private void OnMouseDown()
     {
+        //rb.AddForce(transform.forward * DIR * DirModifier * TouchForce, ForceMode.Impulse);
+        //rb.isKinematic = false;
         isDragging = true;
+        
         dragStartPosition = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
     private void OnMouseUp()
     {
         isDragging = false;
+        //rb.isKinematic = true;
     }
 
     private void OnMouseDrag()
     {
+        if (!IsROundStarted || IsROundENded) return;
         if(DirectionToMove==Direction.x)
          DIR = Input.GetAxis("Mouse X");
         else
@@ -96,7 +99,7 @@ public class RigidMover : MonoBehaviour
         {
             
             //Vector3 worldForceDirection = transform.TransformDirection(localForceDirection);
-            rb.AddForce(transform.forward*DIR*DirModifier * dragForce*Time.fixedDeltaTime, ForceMode.Force);
+            rb.AddForce(transform.forward*DIR*DirModifier * dragForce*Time.fixedDeltaTime, ForceMode.VelocityChange);
             //Debug.Log(transform.name+" FOrce "+DIR * dragForce );
         }
     }

@@ -19,7 +19,7 @@ public class PoliceLight : MonoBehaviour
     {
         
     }
-
+    
     private void CallPolice()
     {
         StartCoroutine(PlayLightsAnimation());
@@ -27,7 +27,7 @@ public class PoliceLight : MonoBehaviour
 
     private void Start()
     {
-        
+        CallPolice();
     }
     IEnumerator PlayLightsAnimation()
     {
