@@ -685,16 +685,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Compact
       objectReference: {fileID: 0}
-    - target: {fileID: 6233673678446882968, guid: 481fa17b85d3a924f8f37e569dabc689,
-        type: 3}
-      propertyPath: dragForce
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 6233673678446882968, guid: 481fa17b85d3a924f8f37e569dabc689,
-        type: 3}
-      propertyPath: FacingBack
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -768,16 +758,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SportsCar
       objectReference: {fileID: 0}
-    - target: {fileID: 3513021729127018757, guid: 3f543129f86be49478005080aea84876,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5919862796347881148, guid: 3f543129f86be49478005080aea84876,
-        type: 3}
-      propertyPath: DirectionToMove
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -815,21 +795,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7237200647711005506, guid: bb0cb0ac88f6b0f43ae0f011438fcc87,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.1679
-      objectReference: {fileID: 0}
-    - target: {fileID: 7237200647711005506, guid: bb0cb0ac88f6b0f43ae0f011438fcc87,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.1679
-      objectReference: {fileID: 0}
-    - target: {fileID: 7237200647711005506, guid: bb0cb0ac88f6b0f43ae0f011438fcc87,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.2410105
       objectReference: {fileID: 0}
     - target: {fileID: 7237200647711005506, guid: bb0cb0ac88f6b0f43ae0f011438fcc87,
         type: 3}
@@ -1299,7 +1264,7 @@ PrefabInstance:
     - target: {fileID: 2889697467689507382, guid: fbcd94e89ad7bae4db5f44f4fd585c01,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 59.7
+      value: 59.11
       objectReference: {fileID: 0}
     - target: {fileID: 2889697467689507382, guid: fbcd94e89ad7bae4db5f44f4fd585c01,
         type: 3}

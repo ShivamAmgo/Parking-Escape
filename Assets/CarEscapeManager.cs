@@ -40,6 +40,10 @@ public class CarEscapeManager : MonoBehaviour
     {
         ExitDoor.OnDoorExit -= OnExitDoor;
     }
+    private void Start()
+    {
+       
+    }
     private void Update()
     {
         if (Input.GetMouseButtonUp(0) && !IsROundSTarted)

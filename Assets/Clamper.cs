@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public enum CarFace
 {
     Front,
@@ -11,6 +12,7 @@ public class Clamper : MonoBehaviour
 {
     Transform Target;
     [SerializeField]CarFace Face = CarFace.Front;
+    [SerializeField] GameObject HitFX;
     Movement m_movement;
     Vector3 CurrentLimit;
     bool IsClamping = false;
@@ -33,15 +35,15 @@ public class Clamper : MonoBehaviour
             if (BR != null) 
             BR.PlayBrakeAnimation();
             m_Brakes.PlayBrakeAnimation();
+            m_Brakes.PlayHitfx(other.ClosestPoint(transform.position));
             Debug.Log(transform.root.name+ " trigger  collided with "+ other.transform.root.name);
+            
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.CompareTag("Car") || other.gameObject.CompareTag("Wall") || other.gameObject.CompareTag("Player"))
-        {
-            //m_movement.SetTriggerTouched(Face, false);
-        }
+       
     }
+  
 }

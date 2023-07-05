@@ -497,6 +497,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Face: 1
+  HitFX: {fileID: 0}
 --- !u!65 &1760246226
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -679,6 +680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Face: 0
+  HitFX: {fileID: 0}
 --- !u!65 &1991134614
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1173,6 +1175,11 @@ PrefabInstance:
         type: 3}
       propertyPath: dragForce
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6233673678446882968, guid: 481fa17b85d3a924f8f37e569dabc689,
+        type: 3}
+      propertyPath: FacingBack
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2207,6 +2214,7 @@ MonoBehaviour:
   BrakeAnimationDuration: 0.25
   CarBody: {fileID: 1278809950}
   HitJiggleValue: 3.5
+  HitFX: {fileID: 0}
 --- !u!1001 &8455766536997515151
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2427,26 +2435,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5478405227081414125, guid: 850843131fb87b24aa32ec895e7777be,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5478405227081414125, guid: 850843131fb87b24aa32ec895e7777be,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5478405227081414125, guid: 850843131fb87b24aa32ec895e7777be,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5478405227081414125, guid: 850843131fb87b24aa32ec895e7777be,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 6449769691815025151, guid: 850843131fb87b24aa32ec895e7777be,
         type: 3}
