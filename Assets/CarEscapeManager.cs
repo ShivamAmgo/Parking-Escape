@@ -2,6 +2,7 @@ using DG.Tweening;
 
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +11,7 @@ public class CarEscapeManager : MonoBehaviour
     [SerializeField] GameObject[] Win_failPanels;
     [SerializeField] int StartSceneIndex = 1;
     [SerializeField] GameObject TapTOstartTExt;
+    [SerializeField] TextMeshProUGUI Lvltxt;
     bool IsROundSTarted = false;
     public delegate void RoundSTart();
     public static event RoundSTart OnROundStart;
@@ -42,16 +44,19 @@ public class CarEscapeManager : MonoBehaviour
     }
     private void Start()
     {
-       
+        Lvltxt.text = "Level " + SceneManager.GetActiveScene().buildIndex;
+        OnROundStart?.Invoke();
     }
     private void Update()
-    {
+    {   
+        /*
         if (Input.GetMouseButtonUp(0) && !IsROundSTarted)
         { 
             IsROundSTarted=true;
             OnROundStart?.Invoke();
             TapTOstartTExt.SetActive(false);
         }
+        */
     }
     private void OnExitDoor(bool WinStatus)
     {

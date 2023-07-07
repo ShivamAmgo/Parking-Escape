@@ -98,7 +98,8 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 974933386cd218f41b7423ab7040f5b0,
+    type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -497,6 +498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Face: 1
+  HitFX: {fileID: 0}
 --- !u!65 &1760246226
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -679,6 +681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Face: 0
+  HitFX: {fileID: 0}
 --- !u!65 &1991134614
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2056,6 +2059,7 @@ MonoBehaviour:
   BrakeAnimationDuration: 0.25
   CarBody: {fileID: 1278809950}
   HitJiggleValue: 3.5
+  HitFX: {fileID: 0}
 --- !u!1001 &8455766536997515151
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2191,26 +2195,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5478405227081414125, guid: 850843131fb87b24aa32ec895e7777be,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5478405227081414125, guid: 850843131fb87b24aa32ec895e7777be,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5478405227081414125, guid: 850843131fb87b24aa32ec895e7777be,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5478405227081414125, guid: 850843131fb87b24aa32ec895e7777be,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 6449769691815025151, guid: 850843131fb87b24aa32ec895e7777be,
         type: 3}

@@ -39,7 +39,7 @@ Transform:
   - {fileID: 5404996872487231109}
   - {fileID: 751839240708755022}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!65 &2680078873755218812
 BoxCollider:
@@ -120,7 +120,7 @@ MonoBehaviour:
   DirectionToMove: 1
   FacingBack: 0
   TouchForce: 1000
-  dragForce: 100
+  dragForce: 70
 --- !u!114 &-1768071837325665805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,7 +148,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.181
+  m_Volume: 0.124
   m_Pitch: 0.92
   Loop: 0
   Mute: 0
@@ -652,7 +652,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8514622636134409478
 Transform:
@@ -676,12 +676,12 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6202526533084352069}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.4537647, g: 0.61760336, b: 0.9339623, a: 1}
-  m_Intensity: 0.5
+  m_Intensity: 6
   m_Range: 0.01
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -720,10 +720,10 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -1088,7 +1088,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3911714068893388762
 Transform:
@@ -1112,12 +1112,12 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8924624475337463438}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.4537647, g: 0.61760336, b: 0.9339623, a: 1}
-  m_Intensity: 0.5
+  m_Intensity: 6
   m_Range: 0.01
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1156,10 +1156,10 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}

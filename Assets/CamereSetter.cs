@@ -15,7 +15,7 @@ public class CamereSetter : MonoBehaviour
         if(currentResolution.width>=1920)
         transform.position += new Vector3(0, CamHeight, 0);
         //Debug.Log("Refresh Rate: " + currentResolution.refreshRate);
-        Debug.Log(currentResolution.width+" Current Resolution: " + CamHeight+ "x" + currentResolution.height);
+       // Debug.Log(currentResolution.width+" Current Resolution: " + CamHeight+ "x" + currentResolution.height);
     }
 
 }

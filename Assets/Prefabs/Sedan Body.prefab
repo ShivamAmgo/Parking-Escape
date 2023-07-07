@@ -546,7 +546,7 @@ MonoBehaviour:
   DirectionToMove: 0
   FacingBack: 0
   TouchForce: 1
-  dragForce: 100
+  dragForce: 70
 --- !u!114 &-1551313731466777154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -574,7 +574,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.181
+  m_Volume: 0.124
   m_Pitch: 0.92
   Loop: 0
   Mute: 0

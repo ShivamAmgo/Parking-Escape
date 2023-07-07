@@ -54,11 +54,14 @@ public class AudioOmMovement : MonoBehaviour
     }
     public void PlayHitSFX()
     {
+        if (IsPlaying) return;
+        audioSource.volume /= 10;
         IsPlaying = true;
         PlayAudioFX(HitSfx, false);
-        DOVirtual.DelayedCall(HitSfx.length, () =>
+        DOVirtual.DelayedCall(HitSfx.length+0.1f, () =>
         {
             IsPlaying = false;
+            audioSource.volume *= 10;
         });
     }
 }
