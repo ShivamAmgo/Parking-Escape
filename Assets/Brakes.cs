@@ -10,6 +10,7 @@ public class Brakes : MonoBehaviour
     [SerializeField] Transform CarBody;
     [SerializeField] float HitJiggleValue = 3.5f;
     [SerializeField] GameObject HitFX;
+    [SerializeField] GameObject TapFx;
     AudioOmMovement AudioPlayer;
     bool IsPlayingBrakesAnimation = false;
     Rigidbody RB;
@@ -46,8 +47,12 @@ public class Brakes : MonoBehaviour
     public void PlayFX(GameObject FX)
     {
         //FX.transform.position = transform.position + new Vector3(0, 2, 0);
+        if (FX == null) return;
         FX.SetActive(false);
         FX.SetActive(true);
     }
-
+    private void OnMouseDown()
+    {
+        PlayFX(TapFx);
+    }
 }

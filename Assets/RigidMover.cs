@@ -7,9 +7,11 @@ using UnityEngine.UIElements;
 
 public class RigidMover : MonoBehaviour
 {
-    [SerializeField] Direction DirectionToMove;
+    [SerializeField]public Direction DirectionToMove;
     [SerializeField]bool FacingBack=false;
     [SerializeField] float TouchForce = 1;
+    [SerializeField] float MaxVelocity = 30;
+    [SerializeField] bool Testing = false;
     public float dragForce = 5f;   // The force to apply to the object while dragging
     private Rigidbody rb;
     private bool isDragging = false;
@@ -94,13 +96,29 @@ public class RigidMover : MonoBehaviour
         else
          DIR = Input.GetAxis("Mouse Y");
 
-
         if (isDragging)
         {
-            
+
             //Vector3 worldForceDirection = transform.TransformDirection(localForceDirection);
+            if (rb.velocity.magnitude >= MaxVelocity)
+            { 
+                
+            }
             rb.AddForce(transform.forward*DIR*DirModifier * dragForce*Time.fixedDeltaTime, ForceMode.VelocityChange);
-            //Debug.Log(transform.name+" FOrce "+DIR * dragForce );
+            
         }
+
+        
     }
+    private void FixedUpdate()
+    {
+        
+            //Vector3 velocity = rb.velocity;
+            rb.velocity= Vector3.ClampMagnitude(rb.velocity, MaxVelocity);
+        //if(Testing)
+        //Debug.Log(transform.name + " FOrce " + DIR * DirModifier * dragForce * Time.fixedDeltaTime + "  velo " + rb.velocity.magnitude);
+
+
+    }
+  
 }

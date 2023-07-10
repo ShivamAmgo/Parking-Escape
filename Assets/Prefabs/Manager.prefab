@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 8412617556681723063}
   - component: {fileID: 2241189162864454037}
   m_Layer: 0
-  m_Name: Manager
+  m_Name: MANAGER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -277,7 +277,7 @@ Transform:
   - {fileID: 3747310037416541934}
   - {fileID: 6979492920495077741}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4546387674407244010
 MonoBehaviour:
@@ -323,7 +323,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b6d1d8397058c4d40b5b7bbde2a94164, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.495
+  m_Volume: 0.388
   m_Pitch: 1
   Loop: 1
   Mute: 0

@@ -36,7 +36,7 @@ public class Clamper : MonoBehaviour
             BR.PlayBrakeAnimation();
             m_Brakes.PlayBrakeAnimation();
             m_Brakes.PlayHitfx(other.ClosestPoint(transform.position));
-            Debug.Log(transform.root.name+ " trigger  collided with "+ other.transform.root.name);
+            //Debug.Log(transform.root.name+ " trigger  collided with "+ other.transform.root.name);
             
         }
     }

@@ -7,6 +7,8 @@ public class AudioOmMovement : MonoBehaviour
 {
     [SerializeField] AudioClip CarRunSfx;
     [SerializeField] AudioClip HitSfx;
+    [SerializeField] AudioClip TapSound;
+    
     AudioSource audioSource;
     public Rigidbody rigidbody;
     
@@ -26,7 +28,7 @@ public class AudioOmMovement : MonoBehaviour
         {
             IsPlaying = true;
             PlayAudioFX(CarRunSfx, true);
-            Debug.Log("gkhdb");
+            //Debug.Log("gkhdb");
         }
         
         else if(IsPlaying && rigidbody.velocity.magnitude <= 0.35f && audioSource.clip==CarRunSfx)
@@ -54,14 +56,19 @@ public class AudioOmMovement : MonoBehaviour
     }
     public void PlayHitSFX()
     {
-        if (IsPlaying) return;
-        audioSource.volume /= 10;
-        IsPlaying = true;
+        //if (IsPlaying) return;
+        //audioSource.volume /= 10;
+        //IsPlaying = true;
         PlayAudioFX(HitSfx, false);
+        
         DOVirtual.DelayedCall(HitSfx.length+0.1f, () =>
         {
             IsPlaying = false;
-            audioSource.volume *= 10;
+            //audioSource.volume *= 10;
         });
+    }
+    private void OnMouseDown()
+    {
+        PlayAudioFX(TapSound, false);
     }
 }
