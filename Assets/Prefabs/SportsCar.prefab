@@ -1005,7 +1005,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19887284, guid: 73e794e55cdc3994f8a2e74b109cbdbd, type: 3}
       propertyPath: simulationSpeed
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 19887284, guid: 73e794e55cdc3994f8a2e74b109cbdbd, type: 3}
       propertyPath: useUnscaledTime
@@ -1017,6 +1017,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19887284, guid: 73e794e55cdc3994f8a2e74b109cbdbd, type: 3}
       propertyPath: startDelay.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19887284, guid: 73e794e55cdc3994f8a2e74b109cbdbd, type: 3}
+      propertyPath: SizeModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19887284, guid: 73e794e55cdc3994f8a2e74b109cbdbd, type: 3}
+      propertyPath: ColorModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19887284, guid: 73e794e55cdc3994f8a2e74b109cbdbd, type: 3}
+      propertyPath: emitterVelocityMode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19887284, guid: 73e794e55cdc3994f8a2e74b109cbdbd, type: 3}

@@ -1720,12 +1720,12 @@ PrefabInstance:
     - target: {fileID: 1011223611819973496, guid: ba185bc7cf756b745804d0d871edb522,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -241
       objectReference: {fileID: 0}
     - target: {fileID: 1469193492507813026, guid: ba185bc7cf756b745804d0d871edb522,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -241
       objectReference: {fileID: 0}
     - target: {fileID: 2650975310078993968, guid: ba185bc7cf756b745804d0d871edb522,
         type: 3}
@@ -1785,7 +1785,7 @@ PrefabInstance:
     - target: {fileID: 4519919375721518262, guid: ba185bc7cf756b745804d0d871edb522,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -241
       objectReference: {fileID: 0}
     - target: {fileID: 4703317073832177726, guid: ba185bc7cf756b745804d0d871edb522,
         type: 3}
@@ -2242,6 +2242,7 @@ MonoBehaviour:
   CarBody: {fileID: 1278809950}
   HitJiggleValue: 3.5
   HitFX: {fileID: 0}
+  TapFx: {fileID: 0}
 --- !u!1001 &8455766536997515151
 PrefabInstance:
   m_ObjectHideFlags: 0

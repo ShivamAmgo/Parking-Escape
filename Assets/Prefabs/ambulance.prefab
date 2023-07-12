@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7853846188318581861}
   - component: {fileID: -1768071837325665805}
   - component: {fileID: -343462215034107137}
+  - component: {fileID: -2629337377643475888}
   m_Layer: 0
   m_Name: ambulance
   m_TagString: Player
@@ -236,6 +237,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-2629337377643475888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291792555909503527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32dcb5287d0b2c345a853b7db0ca8658, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1897589501735379326
 GameObject:
   m_ObjectHideFlags: 0

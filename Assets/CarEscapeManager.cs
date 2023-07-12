@@ -12,7 +12,9 @@ public class CarEscapeManager : MonoBehaviour
     [SerializeField] int StartSceneIndex = 1;
     [SerializeField] GameObject TapTOstartTExt;
     [SerializeField] TextMeshProUGUI Lvltxt;
+    [SerializeField] bool BossLevel = false;
     bool IsROundSTarted = false;
+    bool IsRoundEnd = false;
     public delegate void RoundSTart();
     public static event RoundSTart OnROundStart;
     public delegate void RoundEnd();
@@ -31,7 +33,7 @@ public class CarEscapeManager : MonoBehaviour
             Instance = this;
         }
 
-        //Vibration.Init();
+        Vibration.Init();
 
     }
     private void OnEnable()
@@ -44,22 +46,18 @@ public class CarEscapeManager : MonoBehaviour
     }
     private void Start()
     {
-        Lvltxt.text = "Level " + SceneManager.GetActiveScene().buildIndex;
+        if (!BossLevel)
+            Lvltxt.text = "Level " + SceneManager.GetActiveScene().buildIndex;
+        else
+            Lvltxt.text = "BOSS Level ";
         OnROundStart?.Invoke();
+        
     }
-    private void Update()
-    {   
-        /*
-        if (Input.GetMouseButtonUp(0) && !IsROundSTarted)
-        { 
-            IsROundSTarted=true;
-            OnROundStart?.Invoke();
-            TapTOstartTExt.SetActive(false);
-        }
-        */
-    }
+
     private void OnExitDoor(bool WinStatus)
     {
+        if (IsRoundEnd) return;
+        IsRoundEnd = true;
         SetWIn(true);
     }
     public void SetWIn(bool Winstatus)
@@ -97,9 +95,10 @@ public class CarEscapeManager : MonoBehaviour
             ISManager.instance.ShowInterstitialAds();
 
         */
+        /*
          int index = SceneManager.GetActiveScene().buildIndex;
         index++;
-      
+        
          if (index <= SceneManager.sceneCountInBuildSettings - 1)
          {
         
@@ -109,7 +108,8 @@ public class CarEscapeManager : MonoBehaviour
         {
              SceneManager.LoadScene(StartSceneIndex);
          }
-        /*
+        */
+        
         if (PlayerPrefs.GetInt("Level") >= (SceneManager.sceneCountInBuildSettings) - 1)
         {
             PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level", 1) + 1);
@@ -124,7 +124,8 @@ public class CarEscapeManager : MonoBehaviour
         }
 
         Vibration.Vibrate(30);
-        */
         
+        
+
     }
 }

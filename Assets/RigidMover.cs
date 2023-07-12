@@ -32,6 +32,7 @@ public class RigidMover : MonoBehaviour
     {
         CarEscapeManager.OnROundStart += OnRoundStarted;
         CarEscapeManager.OnROundEnd += OnRoundEnd;
+        CamereSetter.OnCameraRotated += camerarotated;
 
     }
 
@@ -42,9 +43,14 @@ public class RigidMover : MonoBehaviour
 
         CarEscapeManager.OnROundStart -= OnRoundStarted;
         CarEscapeManager.OnROundEnd -= OnRoundEnd;
+        CamereSetter.OnCameraRotated -= camerarotated;
     }
 
-  
+    private void camerarotated()
+    {
+        DirModifier *= -1;
+    }
+
     private void Start()
     {
         RigidbodyConstraints Rc=rb.constraints;
@@ -61,7 +67,8 @@ public class RigidMover : MonoBehaviour
         rb.constraints = Rc;
         //rb.isKinematic = true;
         if (FacingBack)
-            DirModifier = -1;
+            DirModifier *= -1;
+        
     }
     private void OnRoundStarted()
     {
@@ -80,6 +87,7 @@ public class RigidMover : MonoBehaviour
         isDragging = true;
         
         dragStartPosition = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vibration.Vibrate(30);
     }
 
     private void OnMouseUp()
