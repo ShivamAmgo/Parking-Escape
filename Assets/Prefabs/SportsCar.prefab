@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2686035967428468505}
   - component: {fileID: 318781290800627765}
   - component: {fileID: 4800515761390402894}
+  - component: {fileID: 3874080427311737566}
   m_Layer: 0
   m_Name: Sport body
   m_TagString: Untagged
@@ -110,11 +111,32 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 5219988178932909412, guid: f0701dd39865d5c439c5924b54317c09, type: 3}
+--- !u!65 &3874080427311737566
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592336215982397621}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.9898932, y: 4.4025126, z: 1.085083}
+  m_Center: {x: -0.000000059604645, y: -0.071434155, z: 0.62555355}
 --- !u!1 &2408616371614672554
 GameObject:
   m_ObjectHideFlags: 0

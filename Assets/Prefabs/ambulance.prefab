@@ -424,6 +424,7 @@ GameObject:
   - component: {fileID: 4657993839448406395}
   - component: {fileID: 7977299294477453028}
   - component: {fileID: 8141988322552151912}
+  - component: {fileID: 2514751745370898750}
   m_Layer: 0
   m_Name: Ambulance
   m_TagString: Untagged
@@ -513,11 +514,32 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 7429108794089598297, guid: 07b1e72790247c1479852514872c62d7, type: 3}
+--- !u!65 &2514751745370898750
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4692839247668221049}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.1976006, y: 2.15984, z: 4.5091214}
+  m_Center: {x: 0, y: 1.07992, z: 0}
 --- !u!1 &5425658721481217049
 GameObject:
   m_ObjectHideFlags: 0

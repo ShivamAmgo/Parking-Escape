@@ -48,6 +48,7 @@ public class RigidMover : MonoBehaviour
 
     private void camerarotated()
     {
+       
         DirModifier *= -1;
     }
 
