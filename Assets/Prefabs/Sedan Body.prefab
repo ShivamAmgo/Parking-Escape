@@ -573,6 +573,8 @@ MonoBehaviour:
   MaxVelocity: 25
   Testing: 0
   dragForce: 70
+  FrontColliding: 0
+  BackColliding: 0
 --- !u!114 &-1551313731466777154
 MonoBehaviour:
   m_ObjectHideFlags: 0

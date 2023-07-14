@@ -22,7 +22,9 @@ public class RigidMover : MonoBehaviour
     float DirModifier = 1;
     bool IsROundStarted = false;
     bool IsROundENded = false;
-
+    bool Raycasting=false;
+    public bool FrontColliding = false;
+    public bool BackColliding = false;
   
     private void Awake()
     {
@@ -71,6 +73,15 @@ public class RigidMover : MonoBehaviour
             DirModifier *= -1;
         
     }
+    private void Update()
+    {
+        if (!Raycasting) return;
+        
+    }
+    void RaycastDetection()
+    { 
+        
+    }
     private void OnRoundStarted()
     {
         IsROundStarted = true;
@@ -85,6 +96,7 @@ public class RigidMover : MonoBehaviour
     {
         //rb.AddForce(transform.forward * DIR * DirModifier * TouchForce, ForceMode.Impulse);
         //rb.isKinematic = false;
+        
         isDragging = true;
         
         dragStartPosition = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -93,7 +105,8 @@ public class RigidMover : MonoBehaviour
 
     private void OnMouseUp()
     {
-        isDragging = false;
+        
+        Raycasting = false;
         //rb.isKinematic = true;
     }
 
@@ -109,12 +122,11 @@ public class RigidMover : MonoBehaviour
         {
 
             //Vector3 worldForceDirection = transform.TransformDirection(localForceDirection);
-            if (rb.velocity.magnitude >= MaxVelocity)
-            { 
-                
-            }
-            rb.AddForce(transform.forward*DIR*DirModifier * dragForce*Time.fixedDeltaTime, ForceMode.VelocityChange);
-            
+            if (!FrontColliding && DIR * DirModifier > 0) 
+                rb.AddForce(transform.forward*DIR*DirModifier * dragForce*Time.fixedDeltaTime, ForceMode.VelocityChange);
+            else if(!BackColliding && DIR * DirModifier<0)
+                rb.AddForce(transform.forward * DIR * DirModifier * dragForce * Time.fixedDeltaTime, ForceMode.VelocityChange);
+
         }
 
         
