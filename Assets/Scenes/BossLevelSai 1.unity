@@ -1010,6 +1010,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpeedInDuration: 0.25
   JiggleValue: 0.5
+  IsUi: 0
 --- !u!1001 &338321975
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4173,12 +4174,12 @@ PrefabInstance:
     - target: {fileID: 1469193492507813026, guid: ba185bc7cf756b745804d0d871edb522,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 720
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1469193492507813026, guid: ba185bc7cf756b745804d0d871edb522,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -360
+      value: 0.000030518
       objectReference: {fileID: 0}
     - target: {fileID: 2650975310078993968, guid: ba185bc7cf756b745804d0d871edb522,
         type: 3}

@@ -8,14 +8,15 @@ public class HelpingFinger : MonoBehaviour
 {
     [SerializeField] float ScaleOnCLick = 0.2f;
     [SerializeField] float ScaleOnClickDuration = 0.25f;
-    
+    [SerializeField] float MoveDuration = 1f;
    
     Vector3 StartingScale;
     
     private void Start()
     {
         StartingScale=transform.localScale;
-        Wobble();
+        //Wobble();
+        move();
     }
     void Wobble()
     {
@@ -30,5 +31,9 @@ public class HelpingFinger : MonoBehaviour
 
 
         });
+    }
+    void move()
+    {
+        transform.DOLocalMoveZ(transform.localPosition.z+2,MoveDuration).SetEase(Ease.Linear).SetLoops(-1,LoopType.Restart);
     }
 }
