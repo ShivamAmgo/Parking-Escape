@@ -27,7 +27,7 @@ public class AudioOmMovement : MonoBehaviour
         if (rigidbody.velocity.magnitude > 2f && !IsPlaying)
         {
             IsPlaying = true;
-            PlayAudioFX(CarRunSfx, true);
+            PlayAudioFX(CarRunSfx, false);
             //Debug.Log("gkhdb");
         }
         
